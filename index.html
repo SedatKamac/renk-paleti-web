@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Renk Paleti Üretici</title>
+</head>
+<body style="text-align: center; font-family: Arial;">
+    <h1>Resimden Renk Paleti</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit">Renkleri Bul</button>
+    </form>
+
+    {% if image_data %}
+        <h2>Palet</h2>
+        <img src="data:image/png;base64,{{ image_data }}">
+        <ul style="list-style: none;">
+            {% for hex in hex_colors %}
+                <li>{{ hex }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
